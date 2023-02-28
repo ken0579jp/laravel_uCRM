@@ -2,6 +2,10 @@
   import { reactive } from 'vue'
   import { Inertia } from '@inertiajs/inertia'
 
+  defineProps({
+    errors: Object
+  })
+
   const form = reactive({
     title: null,
     content: null,
@@ -16,29 +20,41 @@
 
   <form @submit.prevent="submitFunction">
     <input type="text" name="title" v-model="form.title"><br>
-    <input type="text" name="content" v-model="form.content">
+    <div v-if="errors.title">{{ errors.title }}</div>
+    <input type="text" name="content" v-model="form.content"><br>
+    <div v-if="errors.content">{{ errors.content }}</div>
     <button>送信</button>
   </form>
 
 </template> -->
 
 <script setup>
-import { reactive } from 'vue'
-import { Inertia } from '@inertiajs/inertia'
+  import { ref } from 'vue'
+  import { Link } from '@inertiajs/vue3'
 
-const form = reactive({
-title: null,
-content: null })
+  defineProps({
+    errors: Object
+  })
 
-const submitFunction = () => { 
-  Inertia.post('/inertia', form)
-}
+  const title = ref('');
+  const content = ref('');
+
+
 </script>
 
 <template>
-<form @submit.prevent="submitFunction">
-<input type="text" name="title" v-model="form.title"><br>
-<input type="text" name="content" v-model="form.content"> 
-<button>送信</button>
-</form> 
+
+    <input type="text" name="title" v-model="title"><br>
+    <div class="text-red-400" v-if="errors.title">{{ errors.title }}</div>
+    <input type="text" name="content" v-model="content"><br>
+    <div class="text-red-400" v-if="errors.content">{{ errors.content }}</div>
+    <Link as="button" method="POST" :href="route('inertia.store')"
+  :data="{
+    title: title,
+    content: content
+  }"
+  >DB保存テスト</Link>
+
 </template>
+
+
