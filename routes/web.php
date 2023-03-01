@@ -16,6 +16,9 @@ use App\Http\Controllers\InertiaTestController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/component-test', function() {
+    return Inertia::render('ComponentTest');
+});
 
 Route::get('/inertia-test', [InertiaTestController::class, 'inertia_test'])->name('inertia.test');
 
@@ -44,3 +47,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('/login', function() {
+    return Inertia::render('Auth/Login');
+});

@@ -1,4 +1,4 @@
-<!-- <script setup>
+<script setup>
   import { reactive } from 'vue'
   import { Inertia } from '@inertiajs/inertia'
 
@@ -26,9 +26,9 @@
     <button>送信</button>
   </form>
 
-</template> -->
+</template>
 
-<script setup>
+<!-- <script setup>
   import { ref } from 'vue'
   import { Link } from '@inertiajs/vue3'
 
@@ -36,8 +36,8 @@
     errors: Object
   })
 
-  const title = ref('');
-  const content = ref('');
+  const title = ref('')
+  const content = ref('')
 
 
 </script>
@@ -55,6 +55,6 @@
   }"
   >DB保存テスト</Link>
 
-</template>
+</template> -->
 
 
