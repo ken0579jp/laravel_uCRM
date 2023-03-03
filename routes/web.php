@@ -19,6 +19,9 @@ use App\Http\Controllers\InertiaTestController;
 Route::get('/component-test', function() {
     return Inertia::render('ComponentTest');
 });
+Route::get('/top', function() {
+    return Inertia::render('welcome.blade');
+});
 
 Route::get('/inertia-test', [InertiaTestController::class, 'inertia_test'])->name('inertia.test');
 
